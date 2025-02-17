@@ -1,15 +1,15 @@
 ---
 name: User Story
 about: This template defines a user story
-title: ''
+title: 'User Story template'
 labels: ''
 assignees: ''
 
 ---
 
 **As a recycling enthusiast** 
-**I need to purchase cheap household items** [function]
-**So that I don't need to buy new items** [benefit]
+**I need to purchase cheap household items**
+**So that I don't need to buy new items**
 
 ### Details and Assumptions
     * Web page where people can post their used household items
