@@ -39,37 +39,40 @@ function MainPage() {
     return (
         <div className="container mt-5">
             <div className="row">
-                {gifts.map((gift) => (
-                    <div key={gift.id} className="col-md-4 mb-4">
-                        <div className="card product-card">
-
-                            <div className='image-placeholder'>
-                                {
-                                    gift.image ? (
-                                        <img src={gift.name} className='card-img-top' />
-                                    ) : (
-                                        <div className='no-image-available'>No Image Available</div>
-                                    )
-                                }
-                            </div>
-
-                            <div className="card-body">
-
-                                <h5 className='card-title'>{gift.name}</h5>
-
-                                <p className={`card-text ${getConditionClass(gift.condition)}`}>
-                                {gift.condition}
-                                </p>
-
-                                <p className="card-text">{formatDate(gift.date_added)}</p>
-
-                                <button onClick={() => goToDetailsPage(gift.id)} className="btn btn-primary">
-                                    View Details
-                                </button>
+               {
+                gifts.length ? 
+                    gifts.map((gift) => (
+                        <div key={gift.id} className="col-md-4 mb-4">
+                            <div className="card product-card">
+    
+                                <div className='image-placeholder'>
+                                    {
+                                        gift.image ? (
+                                            <img src={gift.image} className='card-img-top' />
+                                        ) : (
+                                            <div className='no-image-available'>No Image Available</div>
+                                        )
+                                    }
+                                </div>
+    
+                                <div className="card-body">
+    
+                                    <h5 className='card-title'>{gift.name}</h5>
+    
+                                    <p className={`card-text ${getConditionClass(gift.condition)}`}>
+                                    {gift.condition}
+                                    </p>
+    
+                                    <p className="card-text">{formatDate(gift.date_added)}</p>
+    
+                                    <button onClick={() => goToDetailsPage(gift.id)} className="btn btn-primary">
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    )) : <h1>No Data</h1>
+               }
             </div>
         </div>
     );

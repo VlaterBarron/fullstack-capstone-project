@@ -26,7 +26,7 @@ const LoginPage = () => {
                                         className='form-control' 
                                         type='email' 
                                         placeholder='Enter your email'
-                                        value={firstName}
+                                        value={form.email}
                                         onChange={(e) => setForm(v => ({...v, email:e.target.value}))}
                                     />
                         <label htmlFor='password' className=''>Password</label>
@@ -37,7 +37,7 @@ const LoginPage = () => {
                                         className='form-control' 
                                         type='password' 
                                         placeholder='Enter your password'
-                                        value={firstName}
+                                        value={form.password}
                                         onChange={(e) => setForm(v => ({...v, password:e.target.value}))}
                                     />
                                 </div>

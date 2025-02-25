@@ -22,7 +22,7 @@ const RegisterPage = () => {
                                         className='form-control' 
                                         type='text' 
                                         placeholder='Enter your first name'
-                                        value={firstName}
+                                        value={form.firstName}
                                         onChange={(e) => setForm(v => ({...v, firstName:e.target.value}))}
                                     />
                                 </div>
@@ -33,7 +33,7 @@ const RegisterPage = () => {
                                         className='form-control' 
                                         type='text' 
                                         placeholder='Enter your last name'
-                                        value={lastName}
+                                        value={form.lastName}
                                         onChange={(e) => setForm(v => ({...v, lastName:e.target.value}))}
                                     />
                                 </div>
@@ -44,7 +44,7 @@ const RegisterPage = () => {
                                         className='form-control' 
                                         type='email' 
                                         placeholder='Enter your email'
-                                        value={firstName}
+                                        value={form.email}
                                         onChange={(e) => setForm(v => ({...v, email:e.target.value}))}
                                     />
                                 </div>
@@ -55,7 +55,7 @@ const RegisterPage = () => {
                                         className='form-control' 
                                         type='password' 
                                         placeholder='Enter your password'
-                                        value={firstName}
+                                        value={form.password}
                                         onChange={(e) => setForm(v => ({...v, password:e.target.value}))}
                                     />
                                 </div>
