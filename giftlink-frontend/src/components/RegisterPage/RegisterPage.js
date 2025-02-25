@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './RegisterPage.css';
 
 const RegisterPage = () => {
-   const { form, setForm } = useState({ firstName : "", lastName : "", email : "", password : "" });
+   const [ form, setForm ] = useState({ firstName : "", lastName : "", email : "", password : "" });
 
    const handleRegister = async (form) => {
         console.log("Register invoked", form);
@@ -14,7 +14,6 @@ const RegisterPage = () => {
                 <div className='col-md-6 col-lg-4'>
                     <div className='register-card p-4 border rounded'>
                         <h2 className='text-center mb-4 font-weight-bold '>Register</h2>
-                            <form>
                                 <div className='mb-4'>
                                     <label htmlFor='firstName' className='form label'>First Name</label>
                                     <input
@@ -60,8 +59,7 @@ const RegisterPage = () => {
                                     />
                                 </div>
                                 
-                                <button className='btn btn-primary w-100 mb-3' type='submit' onClick={handleRegister(form)}>Register</button>
-                            </form>
+                                <button className='btn btn-primary w-100 mb-3' onClick={() => handleRegister(form)}>Register</button>
                     </div>    
                 </div>
             </div>
