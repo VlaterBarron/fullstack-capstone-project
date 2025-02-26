@@ -1,11 +1,47 @@
 import React, { useState } from 'react';
 import './RegisterPage.css';
+import { urlConfig } from '../../config';
+import { useAppContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
    const [ form, setForm ] = useState({ firstName : "", lastName : "", email : "", password : "" });
+   const [ err, setErr ] = useState("");
+   const navigate = useNavigate();
+   const { setIsLoggedIn } = useAppContext();
 
-   const handleRegister = async (form) => {
-        console.log("Register invoked", form);
+
+   const handleRegister = async () => {
+        try {
+            const res = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
+                method: "POST",
+                headers: { 'content-type' : 'application/json'},
+                body: JSON.stringify({
+                    firstName : form.firstName,
+                    lastName : form.lastName,
+                    email : form.email,
+                    password : form.password
+                })
+            });
+
+            const json = await res.json();
+
+            if(json.authtoken){
+                sessionStorage.setItem('auth-token', json.authtoken);
+                sessionStorage.setItem('name', firstName);
+                sessionStorage.setItem('email', json.email);
+                setIsLoggedIn(true);
+                navigate('/app');
+            };
+
+            if(json.error) {
+                setErr(json.error);
+            };
+
+        } catch(e) {
+            console.log("Error fetching details: " + e.message);
+        }
+
    }
    
     return (
@@ -58,6 +94,7 @@ const RegisterPage = () => {
                                         onChange={(e) => setForm(v => ({...v, password:e.target.value}))}
                                     />
                                 </div>
+                                { err && <div className="text-danger">{err}</div>}
                                 
                                 <button className='btn btn-primary w-100 mb-3' onClick={() => handleRegister(form)}>Register</button>
                     </div>    
