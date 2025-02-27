@@ -12,7 +12,18 @@ const RegisterPage = () => {
 
 
    const handleRegister = async () => {
+
+        if(
+            form.firstName.trim() === "" || 
+            form.lastName.trim() === "" || 
+            form.email.trim() === "" || 
+            form.password.trim() === ""){
+                alert("Empty parameter in input");
+                return;
+            };
+
         try {
+
             const res = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
                 method: "POST",
                 headers: { 'content-type' : 'application/json'},
@@ -28,7 +39,7 @@ const RegisterPage = () => {
 
             if(json.authtoken){
                 sessionStorage.setItem('auth-token', json.authtoken);
-                sessionStorage.setItem('name', firstName);
+                sessionStorage.setItem('name', form.firstName);
                 sessionStorage.setItem('email', json.email);
                 setIsLoggedIn(true);
                 navigate('/app');
