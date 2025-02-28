@@ -11,8 +11,6 @@ function DetailsPage() {
     const [error, setError] = useState(null);
 
 	useEffect(() => {
-        const authenticationToken = sessionStorage.getItem('auth-token');
-
 
         // get the gift to be rendered on the details page
         const fetchGift = async () => {

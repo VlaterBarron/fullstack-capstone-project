@@ -48,7 +48,7 @@ function MainPage() {
                                 <div className='image-placeholder'>
                                     {
                                         gift.image ? (
-                                            <img src={gift.image} className='card-img-top' />
+                                            <img alt="" src={gift.image} className='card-img-top' />
                                         ) : (
                                             <div className='no-image-available'>No Image Available</div>
                                         )
